@@ -3,7 +3,9 @@ version: '3.9'  # Specify Docker Compose version
 services:
   weather-api:
     build: .  # Build the image from the Dockerfile in the current directory
+    environment:
+      - PORT=${PORT:-5000}
     ports:
-      - "5000:5000"  # Map container port 5000 to host port 5000
+      - "${PORT}:5000"  # Map container port 5000 to host port 5000
     restart: unless-stopped  # Restart the container unless manually stopped
 
